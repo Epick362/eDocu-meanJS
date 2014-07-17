@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+	<meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+  <title></title> <!-- the <title> tag shows on email notifications on Android 4.4. -->
+  <style type="text/css">
+  	
+  	/* ensure that clients don't add any padding or spaces around the email design and allow us to style emails for the entire width of the preview pane */
+		body,
+		#bodyTable {
+			height:100% !important;
+			width:100% !important;
+			margin:0;
+			padding:0;
+		}
+		
+		/* Ensures Webkit- and Windows-based clients don't automatically resize the email text. */
+		body,
+		table,
+		td,
+		p,
+		a,
+		li,
+		blockquote {
+			-ms-text-size-adjust:100%;
+			-webkit-text-size-adjust:100%;
+		}
+
+		/* Forces Yahoo! to display emails at full width */
+		.msg-body {
+			width: 100% !important;
+			display: block !important
+		}
+
+    /* Forces Hotmail to display emails at full width */
+    .ReadMsgBody
+    .ExternalClass {
+			width: 100%;
+			background-color: #f4f4f4;
+    }
+
+    /* Forces Hotmail to display normal line spacing. */
+		.ExternalClass,
+		.ExternalClass p,
+		.ExternalClass span,
+		.ExternalClass font,
+		.ExternalClass td,
+		.ExternalClass div {
+			line-height:100%;
+    }
+
+    /* Resolves webkit padding issue. */
+    table {
+			border-spacing:0;
+    }
+
+    /* Resolves the Outlook 2007, 2010, and Gmail td padding issue, and removes spacing around tables that Outlook adds. */
+    table,
+    td {
+			border-collapse:collapse;
+			mso-table-lspace:0pt;
+			mso-table-rspace:0pt;
+    }
+    
+    /* Corrects the way Internet Explorer renders resized images in emails. */
+    img {
+    	-ms-interpolation-mode: bicubic;
+    }
+    
+    /* Ensures images don't have borders or text-decorations applied to them by default. */
+    img,
+    a img {
+    	border:0;
+    	outline:none;
+    	text-decoration:none;	    
+    }
+
+    /* Styles Yahoo's auto-sensing link color and border */
+    .yshortcuts a {
+			border-bottom: none !important;
+    }
+    
+    /* Styles the tel URL scheme */
+    a[href^=tel]{
+	    color:#000000 !important;
+    }
+  
+    /* Media queries for when the viewport is smaller than the default email width but not too narrow. */
+    @media screen and (max-device-width: 600px), screen and (max-width: 600px) {
+
+			/* Constrains email width for small screens */
+			table[class="email-container"] {
+				width: 100% !important;
+			}
+			/* Constrains tables for small screens */
+			table[class="fluid"] {
+				width: 100% !important;
+			}
+			
+			/* Forces images to resize to full width of their container */
+			img[class="fluid"],
+			img[class="force-col-center"] {
+				width: 100% !important;
+				max-width: 100% !important;
+				height: auto !important;
+			}
+			/* And centers these ones */
+				img[class="force-col-center"] {
+				margin: auto !important;
+			}
+			
+			/* Forces table cells into rows */
+			td[class="force-col"],
+			td[class="force-col-center"] {
+				display: block !important;
+				width: 100% !important;
+				clear: both;
+			}
+			/* And centers these ones */
+			td[class="force-col-center"] {
+				text-align: center !important;
+			}
+			
+			/* Forces table cells into rows */
+			/* Floats a previously stacked image to the left */
+			img[class="col-3-img-l"] {
+				float: left;
+				margin: 0 15px 15px 0;
+			}
+			/* Floats a previously stacked image to the right */
+			img[class="col-3-img-r"] {
+				float: right;
+				margin: 0 0 15px 15px;
+			}
+			
+			/* Makes buttons full width */
+			table[class="button"] {
+				width: 100% !important;
+			}
+         
+    }
+
+    /* Media queries for when the viewport is narrow. */
+    /* Rules prefixed with 'hh-' (for 'handheld') repeat much of what's above, but these don't trigger until the smaller screen width. */
+    @media screen and (max-device-width: 425px), screen and (max-width: 425px) {
+
+			/* Helper only visible on handhelds. All styles are inline along with a `display:none`, which this class overrides */
+			div[class="hh-visible"] {
+				display: block !important;
+			}
+			
+			/* Center stuff */
+			div[class="hh-center"] {
+				text-align: center;
+				width: 100% !important;
+			}
+			
+			/* Constrain tables for small screens */
+			table[class="hh-fluid"] {
+				width: 100% !important;
+			}
+			
+			/* Force images to resize to full width of their container */
+			img[class="hh-fluid"],
+			img[class="hh-force-col-center"] {
+				width: 100% !important;
+				max-width: 100% !important;
+				height: auto !important;
+			}
+			/* And center these ones */
+			img[class="hh-force-col-center"] {
+				margin: auto !important;
+			}
+			
+			/* Force table cells into rows */
+			td[class="hh-force-col"],
+			td[class="hh-force-col-center"] {
+				display: block !important;
+				width: 100% !important;
+				clear: both;
+			}
+			/* And center these ones */
+			td[class="hh-force-col-center"] {
+				text-align: center !important;
+			}
+			
+			/* Stack the previously floated images */
+			img[class="col-3-img-l"],
+			img[class="col-3-img-r"] {
+				float: none !important;
+				margin: 15px auto !important;
+				text-align: center !important;
+			}
+
+    }
+          
+  </style>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="#f4f4f4" style="margin:0; padding:0; -webkit-text-size-adjust:none; -ms-text-size-adjust:none;">
+<table cellpadding="0" cellspacing="0" border="0" height="100%" width="100%" bgcolor="#f4f4f4" id="bodyTable"><tr><td>
+
+<!-- CSS Image background in Outlook : BEGIN -->
+<!-- Best used with absolute image paths -->
+<!--[if gte mso 9]>
+  <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+    <v:fill type="tile" color="#f4f4f4" src="assets/nice_snow.png">
+  </v:background>
+<![endif]-->
+<!-- CSS Image background in Outlook : END -->
+
+  <!-- Logo Left Nav Right + Vertical Padding : BEGIN -->
+  <table border="0" width="600" cellpadding="0" cellspacing="0" align="center" class="email-container">
+    <tr>
+      <td class="force-col-center" valign="middle" style="padding: 20px 10px 10px;text-align: left;">
+        <a href="http://www.edocu.eu" target="_blank"><img src="logo.png" align="right" alt="alt text" height="40" width="160" border="0"></a>
+      </td>
+    </tr>
+  </table>
+  <!-- Logo Left Nav Right + Vertical Padding : END -->
+ 
+  <!-- Email Container : BEGIN -->
+  <!-- This table wraps the whole body email within it's width (600px), sets the background color (white) and border (thin, gray, solid) -->
+    <table border="0" width="600" cellpadding="0" cellspacing="0" align="center" bgcolor="#ffffff" style="border: 1px solid #e5e5e5;" class="email-container">
+      <tr>
+        <td>
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+              <td style="padding: 15px; font-family: sans-serif; color: #444444;">
+                <table border="0" width="100%" cellpadding="0" cellspacing="0">
+                	<tr>
+                		<td rowspan="3" width="85"><img style="-webkit-border-radius:50%" width="70" height="70" src="https://dev.edocu.sk/me/pic/{{author.uid}}"></td>
+                		<td colspan="2" style="line-height: 22px;">
+                			<span style="color:#888888;font-size: 20px;">{{ action|capitalize }}:</span> 
+                			<span style="font-size: 26px;">{{ticket.name|title}}</span>
+                		</td>
+                	</tr>
+                	<tr>
+                		<td colspan="2" style="color:#888888;line-height:30px;">
+                			{% for element in elements %}
+                			<a href="{{element.link}}" style="font-size:16px; color:#199CE3">{{element.name}}</a> {% if !loop.last %}|{% endif %} 
+                			{% endfor %}
+                		</td>
+                	</tr>
+                	<tr>
+                		<td><a href="{{author.link}}" style="font-size: 14px; color:#888888; line-height: 16px;text-decoration:none">{{author.name}}</a></td>
+                		<td style="text-align:right;font-size: 14px;line-height: 14px;text-decoration:none">Termín: <strong>{{ ticket.due | date('j.n.Y') }}</strong> at <strong>{{ ticket.due | date('G:i') }}</strong></td>
+                	</tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table style="border-top:3px solid #199CE3;" border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+              <td style="padding: 30px 20px 20px 20px; font-family: sans-serif; font-size: 16px; line-height: 26px; color: #444444;">
+				{% autoescape false %}{{content}}{% endautoescape %}
+                <table cellspacing="0" width="100%" cellpadding="0" border="0" align="center" bgcolor="#FFFFFF" style="border-radius: 3px; border: 1px solid #199CE3;margin-top: 30px;" class="button">
+                  <tr>
+                    <td style="padding: 10px 15px; font-family: sans-serif; color: #199CE3; font-size: 15px; line-height: 15px; text-align: center;">
+                      <a href="{{ticket.link}}" style="text-decoration: none; color: #199CE3; display: block;">
+                        <b>Pozriet viac</b>
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- Full Width, Fluid Column : END -->
+  </table>
+  <!-- Email Container : END -->
+  
+  <!-- Footer : BEGIN -->
+  <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="email-container">
+    <tr>
+      <td style="text-align: center;padding: 20px;font-family: sans-serif; font-size: 12px; line-height: 18px;color: #888888;">
+        Infones s.r.o. &bull; info@edocu.eu &bull; Klincová 37B, Bratislava, Slovakia 82108
+      </td>
+    </tr>
+  </table>
+  <!-- Footer : END -->
+
+</td></tr></table>
+</body>
+</html>
